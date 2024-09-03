@@ -18,5 +18,5 @@ You can you intermediately by:
 ```
 If you want to use it in global
 ```bash
-go install github.com/duyanhitbe/todo-cli
+go install github.com/duyanhitbe/todo-cli@latest
 ```
