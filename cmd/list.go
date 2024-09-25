@@ -4,6 +4,7 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/duyanhitbe/todo-cli/internal/helpers"
@@ -26,6 +27,11 @@ func runList(cmd *cobra.Command, args []string) {
 	data, err := helpers.ReadDataFromCSV()
 	if err != nil {
 		log.Fatal(err)
+	}
+
+	if len(data) == 0 {
+		fmt.Println("List is empty now. Please add more todo item!")
+		return
 	}
 
 	//Init new tab writer

@@ -4,6 +4,7 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 
@@ -13,7 +14,10 @@ import (
 
 // removeCmd represents the remove command
 var removeCmd = &cobra.Command{
-	Use:   "remove [index]",
+	Use: "remove [id]",
+	Long: `
+Arguments:
+  id  ID of todo item you want to remove.`,
 	Short: "Remove a todo item",
 	Run:   runRemove,
 }
@@ -34,8 +38,17 @@ func runRemove(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 
+	if id > len(data) {
+		fmt.Println("Please provide valid ID")
+		return
+	}
+
+	title := data[index][0]
+
 	data = append(data[:index], data[index+1:]...)
 	if err = helpers.OverrideCSV(data); err != nil {
 		log.Fatal(err)
 	}
+
+	fmt.Printf("\"%s\" was deleted\n", title)
 }

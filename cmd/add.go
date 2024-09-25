@@ -4,6 +4,7 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/duyanhitbe/todo-cli/internal/helpers"
@@ -12,7 +13,10 @@ import (
 
 // addCmd represents the add command
 var addCmd = &cobra.Command{
-	Use:   "add [title]",
+	Use: "add [title]",
+	Long: `
+Arguments:
+  title  Title of todo item.`,
 	Short: "Add a new todo item",
 	Run:   runAdd,
 	Args:  cobra.ExactArgs(1),
@@ -32,4 +36,5 @@ func runAdd(cmd *cobra.Command, args []string) {
 	defer file.Close()
 
 	helpers.WriteTodo(title, file)
+	fmt.Println(title + " was added")
 }
