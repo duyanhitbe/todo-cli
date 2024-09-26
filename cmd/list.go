@@ -34,14 +34,7 @@ func runList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	//Init new tab writer
-	w := helpers.NewTabWriter()
-
-	//Print out
-	defer w.Writer.Flush()
-
-	//Write data
-	for i, row := range data {
-		w.Write(i, row)
-	}
+	table := helpers.NewTable()
+	table.Write(data)
+	table.Print()
 }

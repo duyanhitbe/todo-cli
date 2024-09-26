@@ -36,5 +36,5 @@ func runAdd(cmd *cobra.Command, args []string) {
 	defer file.Close()
 
 	helpers.WriteTodo(title, file)
-	fmt.Println(title + " was added")
+	fmt.Printf("\"%s\" was added\n", title)
 }
