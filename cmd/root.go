@@ -13,6 +13,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "todo-cli",
 	Short: "A command line interface for Todo App",
+	Version: "1.2.1",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
